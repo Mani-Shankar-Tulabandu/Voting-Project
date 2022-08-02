@@ -20,6 +20,9 @@ public class Party {
 	private String  symbol;
 	@Column(name = "leader")
 	private String  leader;
+	public Party() {
+		super();
+	}
 	public Party(int regd_Id, String partyName, String symbol, String leader) {
 		super();
 		this.regd_Id = regd_Id;

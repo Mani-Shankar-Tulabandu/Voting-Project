@@ -18,6 +18,7 @@ import com.deloitte.spring.boot.Projectdemo.model.Candidates;
 import com.deloitte.spring.boot.Projectdemo.model.Constituency;
 import com.deloitte.spring.boot.Projectdemo.model.Election;
 import com.deloitte.spring.boot.Projectdemo.model.Party;
+import com.deloitte.spring.boot.Projectdemo.model.Vote;
 import com.deloitte.spring.boot.Projectdemo.service.AdministratorService;
 
 
@@ -80,7 +81,7 @@ public class AdministratorController {
 	@RequestMapping(path = "/get-all-parties", method = RequestMethod.GET)
 	public ResponseEntity<List<Party>> getAllParties() {
 		System.out.println("get-all-parties");
-		List<Party> partiesList = adminService.viewParties();
+		List<Party> partiesList = adminService.viewParty();
 		HttpStatus status = HttpStatus.OK;
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("message", "List of all Parties displayed successfully!");
@@ -106,7 +107,7 @@ public class AdministratorController {
 		Party part = adminService.addParty(party);
 		HttpStatus status = HttpStatus.CREATED;
 		HttpHeaders headers = new HttpHeaders();
-		headers.add("message", "election with id " + party.getRegd_Id() + " is added successfully!");
+		headers.add("message", "party with id " + party.getRegd_Id() + " is added successfully!");
 		ResponseEntity<Party> response = new ResponseEntity<>(part, headers, status);
 		return response;
 	}
@@ -217,6 +218,17 @@ public class AdministratorController {
 		return response;
 	}
 
+	//--------------------------------------------------------------
+	@RequestMapping(path = "/get-all-vote", method = RequestMethod.GET)
+	public ResponseEntity<List<Vote>> getAllVoters() {
+		System.out.println("get-all-Vote");
+		List<Vote> voteList = adminService.viewVotes();
+		HttpStatus status = HttpStatus.OK;
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("message", "List of all Candidates displayed successfully!");
+		ResponseEntity<List<Vote>> response = new ResponseEntity<>(voteList, headers, status);
+		return response;
+	}
 	
 
 }

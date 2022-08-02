@@ -1,13 +1,10 @@
 package com.deloitte.spring.boot.Projectdemo.repository;
 
-import java.util.List;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.deloitte.spring.boot.Projectdemo.model.Administrator;
+import com.deloitte.spring.boot.Projectdemo.model.Constituency;
 import com.deloitte.spring.boot.Projectdemo.model.Election;
 
+public interface ElectionRepository extends JpaRepository<Election, Integer>{
 
-public interface AdministratorRepository extends JpaRepository<Administrator, Integer>{
-	
 }

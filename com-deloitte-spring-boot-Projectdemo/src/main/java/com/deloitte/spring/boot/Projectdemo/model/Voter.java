@@ -30,6 +30,8 @@ public class Voter {
 	@Column(name = "gender")
 	private String  gender;
 
+	@Column(name="constituency_id")
+	private int constituencyId;
 
 	@Column(name = "district")
 	private String district;
