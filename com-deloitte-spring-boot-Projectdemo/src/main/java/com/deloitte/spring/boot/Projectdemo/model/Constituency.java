@@ -31,7 +31,16 @@ public class Constituency {
 	@Column(name = "election_id")
 	private String  electionId;
 
+	@Column(name = "district")
+	private String district;
+	public String getDistrict() {
+		return district;
+	}
 
+
+	public void setDistrict(String district) {
+		this.district = district;
+	}
 	@Column(name = "constituency_name")
 	private int constituencyName;
 	public int getConstituencyId() {
@@ -84,19 +93,22 @@ public class Constituency {
 
 
 	public Constituency(int constituencyId, @NotNull(message = "state can not be null.") String state,
-			String electionId, int constituencyName) {
+			String electionId, int constituencyName,String district) {
 		super();
+		this.district=district;
 		this.constituencyId = constituencyId;
 		this.state = state;
 		this.electionId = electionId;
 		this.constituencyName = constituencyName;
 	}
+
+
 	@Override
 	public String toString() {
-		return "";
+		return "Constituency [constituencyId=" + constituencyId + ", state=" + state + ", electionId=" + electionId
+				+ ", district=" + district + ", constituencyName=" + constituencyName + "]";
 	}
-
-
+	
 //	@ManyToOne
 //	@JoinColumn(name = "departmentId")
 //	private Department department;

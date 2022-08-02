@@ -1,10 +1,14 @@
 package com_deloitte_spring_boot_Projectdemo;
 
+import org.junit.jupiter.api.Test;
 
+import org.springframework.boot.test.context.SpringBootTest;
 
-/**
- * Unit test for simple App.
- */
-public class AppTest 
-{
+@SpringBootTest
+class AppTest {
+
+	@Test
+	void contextLoads() {
+	}
+
 }
