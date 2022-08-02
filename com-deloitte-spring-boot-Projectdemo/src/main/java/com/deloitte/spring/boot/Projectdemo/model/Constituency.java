@@ -29,6 +29,11 @@ public class Constituency {
 	private String state;
 	@Column(name = "election_id")
 	private String  electionId;
+	
+	@ManyToOne
+	@JoinColumn(name = "candidateId")
+	private Candidates candidate;
+
 
 	@Column(name = "district")
 	private String district;
@@ -92,13 +97,15 @@ public class Constituency {
 
 
 	public Constituency(int constituencyId, @NotNull(message = "state can not be null.") String state,
-			String electionId, String constituencyName,String district) {
+			String electionId, String constituencyName,String district,Candidates candidate) {
 		super();
 		this.district=district;
 		this.constituencyId = constituencyId;
 		this.state = state;
 		this.electionId = electionId;
 		this.constituencyName = constituencyName;
+		this.candidate=candidate;
+		
 	}
 
 

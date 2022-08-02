@@ -6,9 +6,14 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.deloitte.spring.boot.Projectdemo.model.Candidates;
 import com.deloitte.spring.boot.Projectdemo.model.Constituency;
 import com.deloitte.spring.boot.Projectdemo.model.Voter;
+import com.deloitte.spring.boot.Projectdemo.repository.CandidatesRepository;
 import com.deloitte.spring.boot.Projectdemo.repository.ConstituencyRepository;
+import com.deloitte.spring.boot.Projectdemo.repository.ElectionRepository;
+import com.deloitte.spring.boot.Projectdemo.repository.PartyRepository;
+import com.deloitte.spring.boot.Projectdemo.repository.VoteRepository;
 import com.deloitte.spring.boot.Projectdemo.repository.VoterRepository;
 
 
@@ -16,9 +21,19 @@ import com.deloitte.spring.boot.Projectdemo.repository.VoterRepository;
 public class VoterService {
   @Autowired
   private VoterRepository voterRepository;
-
-  @Autowired
-  private ConstituencyRepository constituencyRepository;
+  
+  	@Autowired
+	private ElectionRepository electionRepository;
+	@Autowired
+	private PartyRepository partyRepository;
+	@Autowired
+	private ConstituencyRepository constituencyRepository;
+	@Autowired
+	private CandidatesRepository candidatesRepository;
+	@Autowired
+	private VoteRepository voteRepository;
+  
+  
 	
 	public Voter addVoter(Voter vote) {
 		return voterRepository.save(vote);
@@ -27,13 +42,15 @@ public class VoterService {
 		return voterRepository.findAll();
 	}
 	
-	public Constituency getConstituencyByEpic(String epic)
+	public Voter getConstituencyByEpic(String epic)
 	{
 		Voter vot = voterRepository.findByepic(epic);
-		int constituencyID = vot.getConstituencyId();
-		Optional<Constituency> contOptional = constituencyRepository.findById(constituencyID);
-		return contOptional.get();
+		
+		return vot;
 	}
+	
+	
+	
 	
   
 } 

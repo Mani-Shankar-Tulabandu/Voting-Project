@@ -25,10 +25,12 @@ public class Candidates {
 	
 	@Column(name = "constituency_Id")
 	private int constituencyId;
-
 	
-	@Column(name = "party_Reg_Id")
-	private int partyRegId;
+	@ManyToOne
+	@JoinColumn(name = "Regd_Id")
+	private Party party;
+	
+	
 
 	
 	@Column(name = "candidate_Name")
@@ -39,12 +41,13 @@ public class Candidates {
 		super();
 		
 	}
-	public Candidates(int candidateId, int constituencyId, int partyRegId, String candidateName) {
+	public Candidates(int candidateId, int constituencyId,  String candidateName,Party party) {
 		super();
 		this.candidateId = candidateId;
 		this.constituencyId = constituencyId;
-		this.partyRegId = partyRegId;
+		
 		this.candidateName = candidateName;
+		this.party=party;
 	}
 	
 
@@ -68,14 +71,6 @@ public class Candidates {
 	}
 
 
-	public int getPartyRegId() {
-		return partyRegId;
-	}
-
-
-	public void setPartyRegId(int partyRegId) {
-		this.partyRegId = partyRegId;
-	}
 
 
 	public String getCandidateName() {

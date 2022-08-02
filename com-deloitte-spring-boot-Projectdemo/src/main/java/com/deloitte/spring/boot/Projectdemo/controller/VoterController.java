@@ -1,6 +1,7 @@
 package com.deloitte.spring.boot.Projectdemo.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -14,10 +15,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.deloitte.spring.boot.Projectdemo.model.Candidates;
 import com.deloitte.spring.boot.Projectdemo.model.Constituency;
 import com.deloitte.spring.boot.Projectdemo.model.Election;
 import com.deloitte.spring.boot.Projectdemo.model.Voter;
 import com.deloitte.spring.boot.Projectdemo.service.AdministratorService;
+import com.deloitte.spring.boot.Projectdemo.service.CandidatesService;
 import com.deloitte.spring.boot.Projectdemo.service.VoterService;
 
 
@@ -27,6 +30,8 @@ public class VoterController {
 	
 	@Autowired
 	VoterService voterService;
+	
+	
 	
 	@RequestMapping(path = "/get-all-voters", method = RequestMethod.GET)
 	public ResponseEntity<List<Voter>> getAllVoters() {
@@ -51,16 +56,20 @@ public class VoterController {
 	}
 	
 	@RequestMapping(path = "/get-constituency-by-epic/{name}", method = RequestMethod.GET)
-	public ResponseEntity<Constituency> getDeptById(@PathVariable(name = "name") String epic) {
+	public ResponseEntity<Voter> getDeptById(@PathVariable(name = "name") String epic) {
 		System.out.println("get-constituency-by-epic");
-	     Constituency cons = voterService.getConstituencyByEpic(epic);
-		
+	    Voter votee = voterService.getConstituencyByEpic(epic);
 		HttpStatus status = HttpStatus.OK;
 		HttpHeaders headers = new HttpHeaders();
-		headers.add("message", "constituency with epic "+epic+"is found successfully!");
-		ResponseEntity<Constituency> response = new ResponseEntity<>(cons, headers, status);
+		headers.add("message", "constituency with epic "+epic+"is fetched successfully!");
+		ResponseEntity<Voter> response = new ResponseEntity<>(votee, headers, status);
 		return response;
 	}
 	
+	
+	
+	
+ 
+
 
 }

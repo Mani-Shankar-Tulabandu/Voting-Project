@@ -7,9 +7,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "Party_table")
 public class Party {
-@Id // PK
-	
-	
+	@Id // PK
 	@Column(name = "Regd_Id")
 	private int regd_Id;
 

@@ -14,6 +14,8 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.GenericGenerator;
 
+
+
 @Entity
 @Table(name = "Voter_table")
 public class Voter {
@@ -29,16 +31,18 @@ public class Voter {
 	private String voterName;
 	@Column(name = "gender")
 	private String  gender;
+	
+	@ManyToOne
+	@JoinColumn(name = "constituencyId")
+	private Constituency constituency;
 
-	@Column(name="constituency_id")
-	private int constituencyId;
-
-	public int getConstituencyId() {
-		return constituencyId;
+	public Constituency getConstituency() {
+		return constituency;
 	}
-	public void setConstituencyId(int constituencyId) {
-		this.constituencyId = constituencyId;
+	public void setConstituency(Constituency constituency) {
+		this.constituency = constituency;
 	}
+	
 	@Column(name = "district")
 	private String district;
 	@Column(name = "voter_password")
@@ -56,8 +60,9 @@ public class Voter {
 		super();
 	}
 	public Voter(String epic, String voterName, String gender, String district, String voterPassword, String status,
-			String dob, String address, String mobile,int constituencyId) {
+			String dob, String address, String mobile,Constituency constituency) {
 		super();
+		
 		this.epic = epic;
 		this.voterName = voterName;
 		this.gender = gender;
@@ -67,7 +72,8 @@ public class Voter {
 		this.dob = dob;
 		this.address = address;
 		this.mobile = mobile;
-		this.constituencyId=constituencyId;
+		
+		this.constituency=constituency;
 	}
 	public String getEpic() {
 		return epic;
