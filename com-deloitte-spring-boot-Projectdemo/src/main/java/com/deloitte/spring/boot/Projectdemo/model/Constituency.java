@@ -20,7 +20,6 @@ public class Constituency {
 
 	@Id // PK
 	
-	
 	@Column(name = "constituency_id")
 	private int constituencyId;
 
@@ -42,7 +41,7 @@ public class Constituency {
 		this.district = district;
 	}
 	@Column(name = "constituency_name")
-	private int constituencyName;
+	private String constituencyName;
 	public int getConstituencyId() {
 		return constituencyId;
 	}
@@ -73,7 +72,7 @@ public class Constituency {
 	}
 
 
-	public int getConstituencyName() {
+	public String getConstituencyName() {
 		return constituencyName;
 	}
 
@@ -81,7 +80,7 @@ public class Constituency {
 
 
 
-	public void setConstituencyName(int constituencyName) {
+	public void setConstituencyName(String constituencyName) {
 		this.constituencyName = constituencyName;
 	}
 
@@ -93,7 +92,7 @@ public class Constituency {
 
 
 	public Constituency(int constituencyId, @NotNull(message = "state can not be null.") String state,
-			String electionId, int constituencyName,String district) {
+			String electionId, String constituencyName,String district) {
 		super();
 		this.district=district;
 		this.constituencyId = constituencyId;

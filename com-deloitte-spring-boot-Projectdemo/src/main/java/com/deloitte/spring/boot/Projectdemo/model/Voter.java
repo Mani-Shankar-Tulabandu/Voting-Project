@@ -33,6 +33,12 @@ public class Voter {
 	@Column(name="constituency_id")
 	private int constituencyId;
 
+	public int getConstituencyId() {
+		return constituencyId;
+	}
+	public void setConstituencyId(int constituencyId) {
+		this.constituencyId = constituencyId;
+	}
 	@Column(name = "district")
 	private String district;
 	@Column(name = "voter_password")
@@ -50,7 +56,7 @@ public class Voter {
 		super();
 	}
 	public Voter(String epic, String voterName, String gender, String district, String voterPassword, String status,
-			String dob, String address, String mobile) {
+			String dob, String address, String mobile,int constituencyId) {
 		super();
 		this.epic = epic;
 		this.voterName = voterName;
@@ -61,6 +67,7 @@ public class Voter {
 		this.dob = dob;
 		this.address = address;
 		this.mobile = mobile;
+		this.constituencyId=constituencyId;
 	}
 	public String getEpic() {
 		return epic;
