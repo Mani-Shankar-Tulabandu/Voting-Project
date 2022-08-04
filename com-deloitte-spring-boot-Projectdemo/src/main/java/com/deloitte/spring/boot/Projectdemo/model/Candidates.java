@@ -13,6 +13,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.ManyToAny;
 
 @Entity
 @Table(name = "candidates_table")
@@ -28,11 +29,19 @@ public class Candidates {
 	
 	@ManyToOne
 	@JoinColumn(name = "Regd_Id")
-	private Party party;
+	public Party party;
 	
 	
 
 	
+	public Party getParty() {
+		return party;
+	}
+	public void setParty(Party party) {
+		this.party = party;
+	}
+
+
 	@Column(name = "candidate_Name")
 	private String candidateName;
 

@@ -30,9 +30,7 @@ public class Constituency {
 	@Column(name = "election_id")
 	private String  electionId;
 	
-	@ManyToOne
-	@JoinColumn(name = "candidateId")
-	private Candidates candidate;
+	
 
 
 	@Column(name = "district")
@@ -104,7 +102,7 @@ public class Constituency {
 		this.state = state;
 		this.electionId = electionId;
 		this.constituencyName = constituencyName;
-		this.candidate=candidate;
+		
 		
 	}
 
@@ -115,7 +113,5 @@ public class Constituency {
 				+ ", district=" + district + ", constituencyName=" + constituencyName + "]";
 	}
 	
-//	@ManyToOne
-//	@JoinColumn(name = "departmentId")
-//	private Department department;
+
 }
